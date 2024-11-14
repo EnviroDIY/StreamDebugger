@@ -20,7 +20,7 @@ class StreamDebugger
       setDataStream(&data);
       setDumpStream(&dump);
     }
-    
+
     virtual ~StreamDebugger() {}
 
     virtual size_t write(uint8_t ch) {
@@ -42,6 +42,8 @@ class StreamDebugger
     virtual void flush() {
       if (_data)
         _data->flush();
+      if (_dump)
+        _dump->flush();
     }
 
     void directAccess() {
