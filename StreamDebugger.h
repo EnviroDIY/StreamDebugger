@@ -34,6 +34,12 @@ class StreamDebugger
         _dump->write(buffer, size);
       return _data ? _data->write(buffer, size) : 0;
     }
+    virtual size_t write(const char *buffer, size_t size)
+    {
+      if (_dump)
+        _dump->write(buffer, size);
+      return _data ? _data->write(buffer, size) : 0;
+    }
     virtual int read() {
       if (!_data)
         return -1;
